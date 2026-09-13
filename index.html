@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#1b5e3b" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Слушай и бей" />
+    <meta
+      name="description"
+      content="Жди свисток и бей по мячу как можно быстрее. Игра на реакцию для iPad."
+    />
+    <title>Слушай и бей</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icons/icon-192.png" type="image/png" />
+    <link rel="apple-touch-icon" href="icons/icon-180.png" />
+    <link rel="stylesheet" href="style.css?v=1" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="start-screen" class="screen is-active" aria-label="Начало">
+        <div class="start-card">
+          <p class="eyebrow">Для Марка</p>
+          <h1>Слушай и бей ⚽🔊</h1>
+          <p class="lead">
+            Жди свисток судьи. Как только услышишь — скорее нажимай на мяч.
+          </p>
+          <p class="sound-hint">
+            На iPad: выключите бесшумный режим (боковой рычажок не оранжевый),
+            прибавьте громкость и включите звук.
+          </p>
+          <p id="offline-status" class="offline-status">
+            При первом открытии игра сохранится на iPad.
+          </p>
+          <button id="sound-start-btn" class="sound-btn" type="button">
+            🔊 Нажмите, чтобы включить звук
+          </button>
+          <div class="mode-grid">
+            <button id="play-btn" class="mode-btn" type="button">
+              <span class="mode-title">Играть</span>
+              <span class="mode-sub">5 ударов · жди свисток</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="play-screen" class="screen" hidden aria-label="Игра">
+        <header class="play-bar">
+          <button id="home-btn" class="ghost-btn" type="button">Назад</button>
+          <p id="round-chip" class="mode-chip">Раунд 1 / 5</p>
+          <button id="sound-play-btn" class="ghost-btn" type="button">🔊</button>
+        </header>
+        <p id="status" class="status" aria-live="assertive">Жди сигнал...</p>
+        <div class="pitch" id="pitch">
+          <div class="goal" aria-hidden="true">
+            <div class="goal-net"></div>
+            <div class="goal-post left"></div>
+            <div class="goal-post right"></div>
+            <div class="goal-bar"></div>
+          </div>
+          <div class="penalty-arc"></div>
+          <button id="ball" class="ball" type="button" aria-label="Мяч">
+            <span class="ball-face"></span>
+          </button>
+        </div>
+      </section>
+
+      <section id="result-screen" class="screen" hidden aria-label="Результат">
+        <div class="result-card">
+          <p class="eyebrow">Финал</p>
+          <h2>Готово!</h2>
+          <p id="result-best" class="result-score">Лучший: 0 мс</p>
+          <p id="result-avg" class="lead">Средний: 0 мс</p>
+          <p id="result-list" class="result-list"></p>
+          <div class="result-actions">
+            <button id="replay-btn" class="primary-btn" type="button">Играть ещё раз</button>
+            <button id="menu-btn" class="ghost-btn ghost-btn-wide" type="button">В начало</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <audio id="whistle-el" preload="auto" playsinline webkit-playsinline>
+      <source src="sounds/whistle.m4a" type="audio/mp4" />
+      <source src="sounds/whistle.wav" type="audio/wav" />
+    </audio>
+    <audio id="kick-el" preload="auto" playsinline webkit-playsinline>
+      <source src="sounds/kick.m4a" type="audio/mp4" />
+      <source src="sounds/kick.wav" type="audio/wav" />
+    </audio>
+    <audio id="error-el" preload="auto" playsinline webkit-playsinline>
+      <source src="sounds/error.m4a" type="audio/mp4" />
+      <source src="sounds/error.wav" type="audio/wav" />
+    </audio>
+    <audio id="applause-el" preload="auto" playsinline webkit-playsinline>
+      <source src="sounds/applause.m4a" type="audio/mp4" />
+      <source src="sounds/applause.wav" type="audio/wav" />
+    </audio>
+    <script src="app.js?v=1"></script>
+  </body>
+</html>
