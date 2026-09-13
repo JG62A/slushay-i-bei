@@ -32,16 +32,32 @@ var whistleAt = 0;
 function bindTap(el, fn) {
   if (!el) return;
   var locked = false;
+  var lastTouch = 0;
   function run(event) {
-    event.preventDefault();
+    if (event && event.preventDefault) event.preventDefault();
     if (locked) return;
     locked = true;
     fn(event);
     setTimeout(function () {
       locked = false;
-    }, el === els.ball ? 80 : 180);
+    }, el === els.ball ? 80 : 220);
   }
-  el.addEventListener("pointerdown", run);
+  el.addEventListener(
+    "touchstart",
+    function (event) {
+      lastTouch = Date.now();
+      run(event);
+    },
+    false
+  );
+  el.addEventListener(
+    "click",
+    function (event) {
+      if (Date.now() - lastTouch < 700) return;
+      run(event);
+    },
+    false
+  );
 }
 
 function show(screen) {

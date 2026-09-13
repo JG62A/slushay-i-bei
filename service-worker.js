@@ -1,4 +1,4 @@
-var CACHE_NAME = "slushay-i-bei-v2";
+var CACHE_NAME = "slushay-i-bei-v3";
 
 var ASSET_PATHS = [
   "./",
