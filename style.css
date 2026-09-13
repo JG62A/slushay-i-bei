@@ -399,7 +399,11 @@ h1 {
   margin: 14px 0 0;
   color: #4d6b58;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.55;
+}
+
+.result-list p {
+  margin: 4px 0 0;
 }
 
 .result-actions {

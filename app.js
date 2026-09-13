@@ -214,11 +214,11 @@ function finishGame() {
   }, 0) / times.length);
   els.best.textContent = "Лучший: " + best + " мс";
   els.avg.textContent = "Средний: " + avg + " мс";
-  els.list.textContent = times
+  els.list.innerHTML = times
     .map(function (ms, i) {
-      return i + 1 + ") " + ms + " мс — " + grade(ms);
+      return "<p>" + (i + 1) + ") " + ms + " мс — " + grade(ms) + "</p>";
     })
-    .join(" · ");
+    .join("");
   show(els.result);
 }
 
